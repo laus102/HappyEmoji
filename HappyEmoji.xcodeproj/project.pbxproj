@@ -12,6 +12,9 @@
 		0CC93FDC1E7F5D66007FFF7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC93FDA1E7F5D66007FFF7C /* Main.storyboard */; };
 		0CC93FDE1E7F5D66007FFF7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC93FDD1E7F5D66007FFF7C /* Assets.xcassets */; };
 		0CC93FE11E7F5D66007FFF7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC93FDF1E7F5D66007FFF7C /* LaunchScreen.storyboard */; };
+		0CC93FEB1E7F5DCB007FFF7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC93FE91E7F5DCB007FFF7C /* Assets.xcassets */; };
+		C6EBC7101E80AF69004E2B07 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EBC70F1E80AF69004E2B07 /* Helper.swift */; };
+		C6EBC73E1E80C230004E2B07 /* EmojiScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EBC73D1E80C230004E2B07 /* EmojiScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		0CC93FDD1E7F5D66007FFF7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CC93FE01E7F5D66007FFF7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CC93FE21E7F5D66007FFF7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CC93FE91E7F5DCB007FFF7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Particles/Assets.xcassets; sourceTree = "<group>"; };
+		C6EBC70F1E80AF69004E2B07 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		C6EBC73D1E80C230004E2B07 /* EmojiScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +41,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C416CA81E8097FC003FC947 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
 		0CC93FCA1E7F5D66007FFF7C = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +67,16 @@
 		0CC93FD51E7F5D66007FFF7C /* HappyEmoji */ = {
 			isa = PBXGroup;
 			children = (
+				0C416CA81E8097FC003FC947 /* Particles */,
 				0CC93FD61E7F5D66007FFF7C /* AppDelegate.swift */,
 				0CC93FD81E7F5D66007FFF7C /* ViewController.swift */,
 				0CC93FDA1E7F5D66007FFF7C /* Main.storyboard */,
 				0CC93FDD1E7F5D66007FFF7C /* Assets.xcassets */,
 				0CC93FDF1E7F5D66007FFF7C /* LaunchScreen.storyboard */,
 				0CC93FE21E7F5D66007FFF7C /* Info.plist */,
+				0CC93FE91E7F5DCB007FFF7C /* Assets.xcassets */,
+				C6EBC70F1E80AF69004E2B07 /* Helper.swift */,
+				C6EBC73D1E80C230004E2B07 /* EmojiScene.swift */,
 			);
 			path = HappyEmoji;
 			sourceTree = "<group>";
@@ -96,6 +113,7 @@
 				TargetAttributes = {
 					0CC93FD21E7F5D66007FFF7C = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = LF3T92TNXL;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -126,6 +144,7 @@
 				0CC93FE11E7F5D66007FFF7C /* LaunchScreen.storyboard in Resources */,
 				0CC93FDE1E7F5D66007FFF7C /* Assets.xcassets in Resources */,
 				0CC93FDC1E7F5D66007FFF7C /* Main.storyboard in Resources */,
+				0CC93FEB1E7F5DCB007FFF7C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +156,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC93FD91E7F5D66007FFF7C /* ViewController.swift in Sources */,
+				C6EBC73E1E80C230004E2B07 /* EmojiScene.swift in Sources */,
 				0CC93FD71E7F5D66007FFF7C /* AppDelegate.swift in Sources */,
+				C6EBC7101E80AF69004E2B07 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +281,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = LF3T92TNXL;
 				INFOPLIST_FILE = HappyEmoji/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bjl.HappyEmoji;
@@ -272,6 +295,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = LF3T92TNXL;
 				INFOPLIST_FILE = HappyEmoji/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bjl.HappyEmoji;
@@ -299,6 +324,7 @@
 				0CC93FE71E7F5D66007FFF7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
