@@ -19,7 +19,7 @@ class EmojiScene: SKScene {
     
     public func sendShit(origin: CGPoint) { _shootEmoji(origin: origin, node: SKLabelNode(text: "💩")) }
     
-    public func sendMerica(origin: CGPoint) { _shootEmoji(origin: origin, node: SKLabelNode(text: "❤️")) }
+    public func sendHeart(origin: CGPoint) { _shootEmoji(origin: origin, node: SKLabelNode(text: "❤️")) }
     
     public func sendKitty(origin: CGPoint) { _shootEmoji(origin: origin, node: SKLabelNode(text: "🐈")) }
     

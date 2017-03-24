@@ -10,13 +10,15 @@ import UIKit
 import SpriteKit
 
 class ViewController: UIViewController {
-   
-   @IBOutlet weak var squareOne: UIButton!
-   @IBOutlet weak var squareTwo: UIButton!
-   @IBOutlet weak var squareThree: UIButton!
-   @IBOutlet weak var squareFour: UIButton!
-   
-   var emojiScene: EmojiScene!
+    
+    @IBOutlet weak var squareOne: UIButton!
+    @IBOutlet weak var squareTwo: UIButton!
+    @IBOutlet weak var squareThree: UIButton!
+    @IBOutlet weak var squareFour: UIButton!
+    
+    var emojiScene: EmojiScene!
+    var timer: Timer!
+    var repeatTimeInterval = TimeInterval(0.1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,23 +42,56 @@ class ViewController: UIViewController {
         backgroundView.backgroundColor = UIColor.white
         view.addSubview(backgroundView)
         view.sendSubview(toBack: backgroundView)
-
+        
         let squareSize = CGSize(width: view.frame.size.height / 10.0, height: view.frame.size.height / 10.0)
         _formatButtons(squareSize: squareSize) // set pretty colors & constraints
     }
-   
-   // MARK: IBActions
-   
-   /* In SKScenes, the coordinate axis is the inverse of the apple standard,
-      so we need to adjust the center we send to the scene accordingly */
-   
-   @IBAction func squareOneDidPress(_ sender: UIButton) { emojiScene.sendFire(origin: squareThree.center) }
-   
-   @IBAction func squareTwoDidPress(_ sender: UIButton) { emojiScene.sendShit(origin: squareFour.center) }
-   
-   @IBAction func squareThreeDidPress(_ sender: UIButton) { emojiScene.sendMerica(origin: squareOne.center) }
-   
-   @IBAction func squareFourDidPress(_ sender: UIButton) { emojiScene.sendKitty(origin: squareTwo.center) }
-   
+    
+    // MARK: IBActions
+    
+    /* In SKScenes, the coordinate axis is the inverse of the apple standard,
+     so we need to adjust the center we send to the scene accordingly */
+    
+    
+    // Fire Emojis
+    
+    @IBAction func squareOneDidPress(_ sender: UIButton) {
+        
+        emojiScene.sendFire(origin: squareThree.center) // Single shot
+        let closure: (Timer) -> () = { (Timer) in self.emojiScene.sendFire(origin: self.squareThree.center) }
+        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(0.1), repeats: true, block: closure) // Repeating
+    }
+    
+    @IBAction func squareTwoDidPress(_ sender: UIButton) {
+        
+        emojiScene.sendShit(origin: squareFour.center) // Single shot
+        let closure: (Timer) -> () = { (Timer) in self.emojiScene.sendShit(origin: self.squareFour.center) }
+        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(0.1), repeats: true, block: closure) // Repeating
+    }
+    
+    @IBAction func squareThreeDidPress(_ sender: UIButton) {
+        
+        emojiScene.sendHeart(origin: squareOne.center) // Single shot
+        let closure: (Timer) -> () = { (Timer) in self.emojiScene.sendHeart(origin: self.squareOne.center) }
+        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(0.1), repeats: true, block: closure) // Repeating
+    }
+    
+    @IBAction func squareFourDidPress(_ sender: UIButton) {
+        
+        emojiScene.sendKitty(origin: squareTwo.center) // Single shot
+        let closure: (Timer) -> () = { (Timer) in self.emojiScene.sendKitty(origin: self.squareTwo.center) }
+        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(0.1), repeats: true, block: closure) // Repeating
+    }
+    
+    // Stop Firing Emojis
+    
+    @IBAction func squareOneDidReleaseInside(_ sender: UIButton) { timer.invalidate() }
+    
+    @IBAction func squareTwoDidReleaseInside(_ sender: UIButton) { timer.invalidate() }
+    
+    @IBAction func squareThreeDidReleaseInside(_ sender: UIButton) { timer.invalidate() }
+    
+    @IBAction func squareFourDidReleaseInside(_ sender: UIButton) { timer.invalidate() }
+
 }
 
