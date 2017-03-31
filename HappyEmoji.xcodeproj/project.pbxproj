@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C20439D1E8C1E8C003C5221 /* EmojiPickerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20439C1E8C1E8C003C5221 /* EmojiPickerDetailViewController.swift */; };
+		0C2043A11E8C668D003C5221 /* EmojiCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2043A01E8C668D003C5221 /* EmojiCollection.swift */; };
 		0CC93FD71E7F5D66007FFF7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC93FD61E7F5D66007FFF7C /* AppDelegate.swift */; };
 		0CC93FD91E7F5D66007FFF7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC93FD81E7F5D66007FFF7C /* ViewController.swift */; };
 		0CC93FDC1E7F5D66007FFF7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC93FDA1E7F5D66007FFF7C /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C20439C1E8C1E8C003C5221 /* EmojiPickerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiPickerDetailViewController.swift; sourceTree = "<group>"; };
+		0C2043A01E8C668D003C5221 /* EmojiCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCollection.swift; sourceTree = "<group>"; };
 		0CC93FD31E7F5D66007FFF7C /* HappyEmoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyEmoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC93FD61E7F5D66007FFF7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CC93FD81E7F5D66007FFF7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,11 +45,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C416CA81E8097FC003FC947 /* Particles */ = {
+		0C20439E1E8C1E9C003C5221 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0CC93FD81E7F5D66007FFF7C /* ViewController.swift */,
+				0C20439C1E8C1E8C003C5221 /* EmojiPickerDetailViewController.swift */,
 			);
-			name = Particles;
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0C20439F1E8C1EBC003C5221 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				0CC93FDA1E7F5D66007FFF7C /* Main.storyboard */,
+				0CC93FDF1E7F5D66007FFF7C /* LaunchScreen.storyboard */,
+			);
+			name = StoryBoards;
 			sourceTree = "<group>";
 		};
 		0CC93FCA1E7F5D66007FFF7C = {
@@ -67,16 +82,15 @@
 		0CC93FD51E7F5D66007FFF7C /* HappyEmoji */ = {
 			isa = PBXGroup;
 			children = (
-				0C416CA81E8097FC003FC947 /* Particles */,
 				0CC93FD61E7F5D66007FFF7C /* AppDelegate.swift */,
-				0CC93FD81E7F5D66007FFF7C /* ViewController.swift */,
-				0CC93FDA1E7F5D66007FFF7C /* Main.storyboard */,
-				0CC93FDD1E7F5D66007FFF7C /* Assets.xcassets */,
-				0CC93FDF1E7F5D66007FFF7C /* LaunchScreen.storyboard */,
-				0CC93FE21E7F5D66007FFF7C /* Info.plist */,
-				0CC93FE91E7F5DCB007FFF7C /* Assets.xcassets */,
 				C6EBC70F1E80AF69004E2B07 /* Helper.swift */,
 				C6EBC73D1E80C230004E2B07 /* EmojiScene.swift */,
+				0C2043A01E8C668D003C5221 /* EmojiCollection.swift */,
+				0C20439F1E8C1EBC003C5221 /* StoryBoards */,
+				0C20439E1E8C1E9C003C5221 /* ViewControllers */,
+				0CC93FDD1E7F5D66007FFF7C /* Assets.xcassets */,
+				0CC93FE91E7F5DCB007FFF7C /* Assets.xcassets */,
+				0CC93FE21E7F5D66007FFF7C /* Info.plist */,
 			);
 			path = HappyEmoji;
 			sourceTree = "<group>";
@@ -158,6 +172,8 @@
 				0CC93FD91E7F5D66007FFF7C /* ViewController.swift in Sources */,
 				C6EBC73E1E80C230004E2B07 /* EmojiScene.swift in Sources */,
 				0CC93FD71E7F5D66007FFF7C /* AppDelegate.swift in Sources */,
+				0C20439D1E8C1E8C003C5221 /* EmojiPickerDetailViewController.swift in Sources */,
+				0C2043A11E8C668D003C5221 /* EmojiCollection.swift in Sources */,
 				C6EBC7101E80AF69004E2B07 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

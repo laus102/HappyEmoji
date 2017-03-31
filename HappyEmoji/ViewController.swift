@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController /*UIViewControllerPreviewingDelegate*/ {
     
     @IBOutlet weak var squareOne: UIButton!
     @IBOutlet weak var squareTwo: UIButton!
@@ -22,6 +22,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //if (traitCollection.forceTouchCapability == .available) {
+          //  registerForPreviewing(with: self, sourceView: view)
+        //}
+        
+//        for i in 0x1F601...0x1F64F {
+//            let emoji = String(describing: UnicodeScalar(i))
+//            
+//        }
+        
+        let emojis = ["❤️", "🐈", "💩", "🔥"]
+        for emoji in emojis {
+            let uni = emoji.unicodeScalars
+            let unicode = uni[uni.startIndex].value
+            print(String(unicode, radix: 16, uppercase: true))
+        }
         
         emojiScene = EmojiScene(size: view.bounds.size)
         emojiScene.scaleMode = .resizeFill
@@ -46,6 +62,19 @@ class ViewController: UIViewController {
         let squareSize = CGSize(width: view.frame.size.height / 10.0, height: view.frame.size.height / 10.0)
         _formatButtons(squareSize: squareSize) // set pretty colors & constraints
     }
+    
+    
+    // UIViewControllerPreviewingDelegate Implementation
+    /*
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let pickerVC = storyboard?.instantiateViewController(withIdentifier: "EmojiPickerDetailViewController") as? EmojiPickerDetailViewController
+            else { return nil }
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+    }*/
+    
     
     // MARK: IBActions
     
