@@ -15,43 +15,18 @@ class EmojiScene: SKScene {
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -1.0)
     }
     
-    public func sendFire(withSender sender: AnyObject) {
+    public func sendEmoji(sender: AnyObject, emoji: String? = nil) {
 
         if let senderButton = sender as? UIButton
-            { _shootEmoji(origin: senderButton.center, node: SKLabelNode(text: "🔥")) }
-        
-        else if let senderTimer = sender as? Timer, let button = senderTimer.userInfo as? UIButton
-            { _shootEmoji(origin: button.center, node: SKLabelNode(text: "🔥")) }
+            { _shootEmoji(origin: convertPoint(toView: senderButton.center), node: SKLabelNode(text: emoji)) }
     }
     
-    public func sendShit(withSender sender: AnyObject) {
+    public func sendEmoji(sender: AnyObject) {
 
-        if let senderButton = sender as? UIButton
-            { _shootEmoji(origin: senderButton.center, node: SKLabelNode(text: "💩")) }
-
-        else if let senderTimer = sender as? Timer, let button = senderTimer.userInfo as? UIButton
-            { _shootEmoji(origin: button.center, node: SKLabelNode(text: "💩")) }
+        if let senderTimer = sender as? Timer, let info = senderTimer.userInfo as? (UIButton, String)
+            { _shootEmoji(origin: convertPoint(toView: info.0.center), node: SKLabelNode(text: info.1)) }
     }
-    
-    public func sendHeart(withSender sender: AnyObject) {
 
-        if let senderButton = sender as? UIButton
-            { _shootEmoji(origin: senderButton.center, node: SKLabelNode(text: "❤️")) }
-        
-        else if let senderTimer = sender as? Timer, let button = senderTimer.userInfo as? UIButton
-            { _shootEmoji(origin: button.center, node: SKLabelNode(text: "❤️")) }
-    }
-    
-    public func sendKitty(withSender sender: AnyObject) {
-
-        if let senderButton = sender as? UIButton
-            { _shootEmoji(origin: senderButton.center, node: SKLabelNode(text: "🐈")) }
-        
-        else if let senderTimer = sender as? Timer, let button = senderTimer.userInfo as? UIButton
-            { _shootEmoji(origin: button.center, node: SKLabelNode(text: "🐈")) }
-    }
-    
-    
     private func _shootEmoji(origin: CGPoint, node: SKLabelNode) {
         
         node.position = origin
@@ -69,7 +44,6 @@ class EmojiScene: SKScene {
         
         let finalY = random(min: origin.y + node.frame.height, max: size.height)
         let finalX = random(min: origin.x/2, max: origin.x + origin.x/2)
-        
         let finalPoint = CGPoint(x: finalX, y: finalY)
         
         // Bezier Path for emojis.... FIX ME (later)

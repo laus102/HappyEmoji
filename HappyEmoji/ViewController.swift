@@ -18,7 +18,7 @@ class ViewController: UIViewController /*UIViewControllerPreviewingDelegate*/ {
     
     var emojiScene: EmojiScene!
     var timer: Timer!
-    var repeatTimeInterval = TimeInterval(0.1)
+    let repeatInterval = TimeInterval(0.1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +32,16 @@ class ViewController: UIViewController /*UIViewControllerPreviewingDelegate*/ {
 //            
 //        }
 
-        let emojis = ["❤️", "🐈", "💩", "🔥"]
-        for emoji in emojis {
-            let uni = emoji.unicodeScalars
-            let unicode = uni[uni.startIndex].value
-            print(String(unicode, radix: 16, uppercase: true))
-        }
-        
+//        let emojis = ["❤️", "🐈", "💩", "🔥"]
+//        for emoji in emojis {
+//            let uni = emoji.unicodeScalars
+//            let unicode = uni[uni.startIndex].value
+//            print(String(unicode, radix: 16, uppercase: true))
+//        }
+
         emojiScene = EmojiScene(size: view.bounds.size)
         emojiScene.scaleMode = .resizeFill
-        
+
         let emojiView = SKView(frame: view.frame)
         
         emojiView.allowsTransparency = true
@@ -58,13 +58,7 @@ class ViewController: UIViewController /*UIViewControllerPreviewingDelegate*/ {
         backgroundView.backgroundColor = UIColor.white
         view.addSubview(backgroundView)
         view.sendSubview(toBack: backgroundView)
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = backgroundView.frame
-        gradientLayer.colors = [UIColor.gray.cgColor, UIColor.clear.cgColor]
-        gradientLayer.locations = [0.0, 0.1]
-        backgroundView.layer.addSublayer(gradientLayer)
-        
+
         let squareSize = CGSize(width: view.frame.size.height / 10.0, height: view.frame.size.height / 10.0)
         _formatButtons(squareSize: squareSize) // set pretty colors & constraints
     }
@@ -83,47 +77,43 @@ class ViewController: UIViewController /*UIViewControllerPreviewingDelegate*/ {
     
     
     // MARK: IBActions
-    
-    /* In SKScenes, the coordinate axis is the inverse of the apple standard,
-     so we need to adjust the center we send to the scene accordingly */
-    
-    
+
     // Fire Emojis
     
     @IBAction func squareOneDidPress(_ sender: UIButton) {
 
         // Single shot
-        emojiScene.sendFire(withSender: squareThree)
+        emojiScene.sendEmoji(sender: squareOne, emoji: "🔥")
 
         // Repeating
-        timer = Timer.scheduledTimer(timeInterval: TimeInterval(0.1), target: self.emojiScene, selector: #selector(self.emojiScene.sendFire(withSender:)), userInfo: squareThree, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: repeatInterval, target: self.emojiScene, selector: #selector(self.emojiScene.sendEmoji(sender:)), userInfo: (squareOne, "🔥"), repeats: true)
     }
     
     @IBAction func squareTwoDidPress(_ sender: UIButton) {
         
         // Single shot
-        emojiScene.sendShit(withSender: squareFour)
+        emojiScene.sendEmoji(sender: squareTwo, emoji: "💩")
         
         // Repeating
-        timer = Timer.scheduledTimer(timeInterval: TimeInterval(0.1), target: self.emojiScene, selector: #selector(self.emojiScene.sendShit(withSender:)), userInfo: squareFour, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: repeatInterval, target: self.emojiScene, selector: #selector(self.emojiScene.sendEmoji(sender:)), userInfo: (squareTwo, "💩"), repeats: true)
     }
     
     @IBAction func squareThreeDidPress(_ sender: UIButton) {
         
         // Single shot
-        emojiScene.sendHeart(withSender: squareOne)
+        emojiScene.sendEmoji(sender: squareThree, emoji: "❤️")
         
         // repeating
-        timer = Timer.scheduledTimer(timeInterval: TimeInterval(0.1), target: self.emojiScene, selector: #selector(self.emojiScene.sendHeart(withSender:)), userInfo: squareOne, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: repeatInterval, target: self.emojiScene, selector: #selector(self.emojiScene.sendEmoji(sender:)), userInfo: (squareThree, "❤️"), repeats: true)
     }
     
     @IBAction func squareFourDidPress(_ sender: UIButton) {
         
         // Single shot
-        emojiScene.sendKitty(withSender: squareTwo)
+        emojiScene.sendEmoji(sender: squareFour, emoji: "🐈")
         
         // repeating
-        timer = Timer.scheduledTimer(timeInterval: TimeInterval(0.1), target: self.emojiScene, selector: #selector(self.emojiScene.sendKitty(withSender:)), userInfo: squareTwo, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: repeatInterval, target: self.emojiScene, selector: #selector(self.emojiScene.sendEmoji(sender:)), userInfo: (squareFour, "🐈"), repeats: true)
     }
     
     // Stop Firing Emojis
