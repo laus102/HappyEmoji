@@ -22,7 +22,7 @@ class ViewController: UIViewController /*UIViewControllerPreviewingDelegate*/ {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //if (traitCollection.forceTouchCapability == .available) {
           //  registerForPreviewing(with: self, sourceView: view)
         //}
@@ -31,7 +31,7 @@ class ViewController: UIViewController /*UIViewControllerPreviewingDelegate*/ {
 //            let emoji = String(describing: UnicodeScalar(i))
 //            
 //        }
-        
+
         let emojis = ["❤️", "🐈", "💩", "🔥"]
         for emoji in emojis {
             let uni = emoji.unicodeScalars
@@ -59,6 +59,12 @@ class ViewController: UIViewController /*UIViewControllerPreviewingDelegate*/ {
         view.addSubview(backgroundView)
         view.sendSubview(toBack: backgroundView)
         
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = backgroundView.frame
+        gradientLayer.colors = [UIColor.gray.cgColor, UIColor.clear.cgColor]
+        gradientLayer.locations = [0.0, 0.1]
+        backgroundView.layer.addSublayer(gradientLayer)
+        
         let squareSize = CGSize(width: view.frame.size.height / 10.0, height: view.frame.size.height / 10.0)
         _formatButtons(squareSize: squareSize) // set pretty colors & constraints
     }
@@ -85,31 +91,39 @@ class ViewController: UIViewController /*UIViewControllerPreviewingDelegate*/ {
     // Fire Emojis
     
     @IBAction func squareOneDidPress(_ sender: UIButton) {
-        
-        emojiScene.sendFire(origin: squareThree.center) // Single shot
-        let closure: (Timer) -> () = { (Timer) in self.emojiScene.sendFire(origin: self.squareThree.center) }
-        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(0.1), repeats: true, block: closure) // Repeating
+
+        // Single shot
+        emojiScene.sendFire(withSender: squareThree)
+
+        // Repeating
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(0.1), target: self.emojiScene, selector: #selector(self.emojiScene.sendFire(withSender:)), userInfo: squareThree, repeats: true)
     }
     
     @IBAction func squareTwoDidPress(_ sender: UIButton) {
         
-        emojiScene.sendShit(origin: squareFour.center) // Single shot
-        let closure: (Timer) -> () = { (Timer) in self.emojiScene.sendShit(origin: self.squareFour.center) }
-        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(0.1), repeats: true, block: closure) // Repeating
+        // Single shot
+        emojiScene.sendShit(withSender: squareFour)
+        
+        // Repeating
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(0.1), target: self.emojiScene, selector: #selector(self.emojiScene.sendShit(withSender:)), userInfo: squareFour, repeats: true)
     }
     
     @IBAction func squareThreeDidPress(_ sender: UIButton) {
         
-        emojiScene.sendHeart(origin: squareOne.center) // Single shot
-        let closure: (Timer) -> () = { (Timer) in self.emojiScene.sendHeart(origin: self.squareOne.center) }
-        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(0.1), repeats: true, block: closure) // Repeating
+        // Single shot
+        emojiScene.sendHeart(withSender: squareOne)
+        
+        // repeating
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(0.1), target: self.emojiScene, selector: #selector(self.emojiScene.sendHeart(withSender:)), userInfo: squareOne, repeats: true)
     }
     
     @IBAction func squareFourDidPress(_ sender: UIButton) {
         
-        emojiScene.sendKitty(origin: squareTwo.center) // Single shot
-        let closure: (Timer) -> () = { (Timer) in self.emojiScene.sendKitty(origin: self.squareTwo.center) }
-        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(0.1), repeats: true, block: closure) // Repeating
+        // Single shot
+        emojiScene.sendKitty(withSender: squareTwo)
+        
+        // repeating
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(0.1), target: self.emojiScene, selector: #selector(self.emojiScene.sendKitty(withSender:)), userInfo: squareTwo, repeats: true)
     }
     
     // Stop Firing Emojis

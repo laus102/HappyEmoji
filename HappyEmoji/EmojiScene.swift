@@ -15,13 +15,41 @@ class EmojiScene: SKScene {
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -1.0)
     }
     
-    public func sendFire(origin: CGPoint) { _shootEmoji(origin: origin, node: SKLabelNode(text: "🔥")) }
+    public func sendFire(withSender sender: AnyObject) {
+
+        if let senderButton = sender as? UIButton
+            { _shootEmoji(origin: senderButton.center, node: SKLabelNode(text: "🔥")) }
+        
+        else if let senderTimer = sender as? Timer, let button = senderTimer.userInfo as? UIButton
+            { _shootEmoji(origin: button.center, node: SKLabelNode(text: "🔥")) }
+    }
     
-    public func sendShit(origin: CGPoint) { _shootEmoji(origin: origin, node: SKLabelNode(text: "💩")) }
+    public func sendShit(withSender sender: AnyObject) {
+
+        if let senderButton = sender as? UIButton
+            { _shootEmoji(origin: senderButton.center, node: SKLabelNode(text: "💩")) }
+
+        else if let senderTimer = sender as? Timer, let button = senderTimer.userInfo as? UIButton
+            { _shootEmoji(origin: button.center, node: SKLabelNode(text: "💩")) }
+    }
     
-    public func sendHeart(origin: CGPoint) { _shootEmoji(origin: origin, node: SKLabelNode(text: "❤️")) }
+    public func sendHeart(withSender sender: AnyObject) {
+
+        if let senderButton = sender as? UIButton
+            { _shootEmoji(origin: senderButton.center, node: SKLabelNode(text: "❤️")) }
+        
+        else if let senderTimer = sender as? Timer, let button = senderTimer.userInfo as? UIButton
+            { _shootEmoji(origin: button.center, node: SKLabelNode(text: "❤️")) }
+    }
     
-    public func sendKitty(origin: CGPoint) { _shootEmoji(origin: origin, node: SKLabelNode(text: "🐈")) }
+    public func sendKitty(withSender sender: AnyObject) {
+
+        if let senderButton = sender as? UIButton
+            { _shootEmoji(origin: senderButton.center, node: SKLabelNode(text: "🐈")) }
+        
+        else if let senderTimer = sender as? Timer, let button = senderTimer.userInfo as? UIButton
+            { _shootEmoji(origin: button.center, node: SKLabelNode(text: "🐈")) }
+    }
     
     
     private func _shootEmoji(origin: CGPoint, node: SKLabelNode) {
